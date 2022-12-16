@@ -1,6 +1,8 @@
 import {useState} from 'react'
 import { Header } from "../components/Header"
 import contatoImg from "../assets/contato.svg"
+import { database } from '../service/firebase'
+import {ref, push, set } from 'firebase/database'
 
 import styles from "../styles/pages/contato.module.css"
 
@@ -27,6 +29,14 @@ export function Contato() {
         console.log('nome:', nome);
         console.log('email:', email)
         console.log('mensagem:', mensagem)
+
+        const mensagensChild = ref(database, 'mensagens')
+        const novamensagensChild = push(mensagensChild) 
+        set(novamensagensChild, {
+            nome: nome,
+            email: email,
+            texto: mensagem
+        })
 
         setNome('');
         setMail('');
