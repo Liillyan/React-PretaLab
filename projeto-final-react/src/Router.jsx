@@ -1,14 +1,25 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
+import { Inicio } from './pages/Inicio'
+import { Sobre } from './pages/Sobre'
+import { Portfolio } from './pages/Portfolio'
+import { Contato } from './pages/Contato'
+
+import { Menu } from './components/Menu'
+
+import { Footer } from './components/Footer'
+
 export function Router() {
     return(
         <BrowserRouter>
+        <Menu/>
         <Routes>
-        <Route path="/" element= {<h1>Inicio</h1>} />
-        <Route path="/sobre" element={<h1>sobre</h1>} />
-        <Route path="/portfolio" element={<h1>portfolio</h1>} />
-        <Route path="/contato" element={<h1>Contato</h1>}  />
+        <Route path="/" element= {<Inicio/>} />
+        <Route path="/sobre" element= {<Sobre/>} />
+        <Route path="/portfolio" element= {<Portfolio/>} />
+        <Route path="/contato" element= {<Contato/>}  />
         </Routes>
+        <Footer/>
         </BrowserRouter>
     )
 }
